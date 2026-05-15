@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: ecommerce
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/YOUR_GITHUB/eks-gitops-config
+    targetRevision: main
+    path: apps/ecommerce
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ecommerce
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

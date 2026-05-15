@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: ecommerce-backend
+  namespace: ecommerce
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: ecommerce-backend
+
+  template:
+    metadata:
+      labels:
+        app: ecommerce-backend
+
+    spec:
+      containers:
+      - name: ecommerce-backend
+
+        image: YOUR_DOCKER_USER/e-commerce-backend:v1
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8080

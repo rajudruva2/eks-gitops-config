@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: ems-frontend
+  namespace: ems
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: ems-frontend
+
+  template:
+    metadata:
+      labels:
+        app: ems-frontend
+
+    spec:
+      containers:
+      - name: ems-frontend
+
+        image: YOUR_DOCKER_USER/ems-frontend:v1
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 80
+
+        env:
+        - name: REACT_APP_API_URL
+          value: http://ems-backend-service:8080
