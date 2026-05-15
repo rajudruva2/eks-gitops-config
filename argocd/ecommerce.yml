@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/YOUR_GITHUB/eks-gitops-config
+    repoURL: https://github.com/rajudruva2/eks-gitops-config
     targetRevision: main
     path: apps/ecommerce
 
