@@ -18,10 +18,12 @@ spec:
         app: ecommerce-backend
 
     spec:
+      imagePullSecrets:
+      - name: dockerhub-secret
       containers:
       - name: ecommerce-backend
 
-        image: YOUR_DOCKER_USER/e-commerce-backend:v1
+        image: rajvam6806/e-commerce-backend:b016d5ebfa8bb5a457b4bd6e34e202021367bdc9
 
         imagePullPolicy: Always
 

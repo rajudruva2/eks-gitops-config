@@ -21,7 +21,7 @@ spec:
       containers:
       - name: ecommerce-frontend
 
-        image: YOUR_DOCKER_USER/e-commers-frontend:v1
+        image: rajvam6806/e-commerce-frontend:2575d46199e26a1d09f90004ee64bca361d9fe3b
 
         imagePullPolicy: Always
 
@@ -30,4 +30,4 @@ spec:
 
         env:
         - name: REACT_APP_API_URL
-          value: http://ecommerce-backend-service:8080
+          value: aeb7e038165c449d789c27495443828d-753465246.ap-south-1.elb.amazonaws.com
