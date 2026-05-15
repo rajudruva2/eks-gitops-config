@@ -24,9 +24,9 @@ spec:
       - name: ecommerce-backend
 
 <<<<<<< HEAD
-        image: rajvam6806/e-commerce-backend:b016d5ebfa8bb5a457b4bd6e34e202021367bdc9
+        image: rajvam6806/e-commerce-backend:b386efaf3efe6de90a0dd2aa5d6eecbd3e994074
 =======
-        image: rajvam6806/e-commerce-backend:v1
+        image: rajvam6806/e-commerce-backend:b386efaf3efe6de90a0dd2aa5d6eecbd3e994074
 >>>>>>> 4982c8a8d3e119d4d0bc3a166a3a3db2d3b832c4
 
         imagePullPolicy: Always
