@@ -21,7 +21,7 @@ spec:
       containers:
       - name: ecommerce-backend
 
-        image: YOUR_DOCKER_USER/e-commerce-backend:v1
+        image: rajvam6806/e-commerce-backend:v1
 
         imagePullPolicy: Always
 
