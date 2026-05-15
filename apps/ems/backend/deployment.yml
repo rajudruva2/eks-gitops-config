@@ -21,7 +21,7 @@ spec:
       containers:
       - name: ems-backend
 
-        image: YOUR_DOCKER_USER/ems-backend:v1
+        image: rajvam6806/ems-backend:v1
 
         imagePullPolicy: Always
 
