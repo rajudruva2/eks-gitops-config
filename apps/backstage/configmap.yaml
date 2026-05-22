@@ -1,3 +1,4 @@
+
 apiVersion: v1
 kind: ConfigMap
 
@@ -30,15 +31,15 @@ data:
         methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
         credentials: true
 
-      database:
-        client: pg
+    database:
+      client: pg
 
-        connection:
-          host: postgres.postgres.svc.cluster.local
-          port: 5432
-          user: backstage
-          password: backstage123
-          database: backstage
+      connection:
+        host: postgres.postgres.svc.cluster.local
+        port: 5432
+        user: backstage
+        password: backstage123
+        database: backstage
 
     auth:
       environment: production
