@@ -6,7 +6,7 @@ metadata:
   namespace: backstage
 
 spec:
-  replicas: 2
+  replicas: 1
 
   selector:
     matchLabels:
@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: ghcr.io/backstage/backstage:latest
+          image: rajvam6806/backstage-platform:t1
           imagePullPolicy: Always
 
           command:
