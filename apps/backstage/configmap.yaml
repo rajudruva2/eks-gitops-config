@@ -32,10 +32,8 @@ data:
         credentials: true
 
     database:
-      client: pg
-
-      connection:
-        connectionString: postgresql://backstage:backstage123@postgres.postgres.svc.cluster.local:5432/backstage
+      client: better-sqlite3
+      connection: ':memory:'
 
     auth:
       environment: production
