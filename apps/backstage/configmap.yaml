@@ -35,11 +35,7 @@ data:
       client: pg
 
       connection:
-        host: postgres.postgres.svc.cluster.local
-        port: 5432
-        user: backstage
-        password: backstage123
-        database: backstage
+        connectionString: postgresql://backstage:backstage123@postgres.postgres.svc.cluster.local:5432/backstage
 
     auth:
       environment: production
