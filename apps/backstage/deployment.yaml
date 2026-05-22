@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: rajvam6806/backstage-platform:v10
+          image: rajvam6806/backstage-platform:v20
           imagePullPolicy: Always
 
           command:
