@@ -72,7 +72,8 @@ data:
           target: https://raw.githubusercontent.com/rajudruva2/backstage-catalog/main/catalog-info.yaml
 
     kubernetes:
-      clusterLocatorMethods: []
+      serviceLocatorMethod:
+        type: multiTenant
 
     permission:
       enabled: false
