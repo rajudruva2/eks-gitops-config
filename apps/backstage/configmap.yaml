@@ -46,7 +46,8 @@ data:
       environment: development
 
       providers:
-        guest: {}
+        guest: 
+           dangerouslyAllowOutsideDevelopment: true
           
 
     scaffolder: {}
