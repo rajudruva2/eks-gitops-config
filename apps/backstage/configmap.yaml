@@ -30,8 +30,13 @@ data:
         dangerouslyDisableDefaultAuthPolicy: true
 
       database:
-        client: better-sqlite3
-        connection: ':memory:'
+        client: pg
+        connection: 
+          host: postgres
+          port: 5432
+          user: backstage
+          password: backstage123
+          database: backstage
 
     auth:
       environment: development
