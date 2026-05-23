@@ -27,25 +27,17 @@ data:
         credentials: true
 
       auth:
-        keys:
-          - secret: backstage-secret-key
+        dangerouslyDisableDefaultAuthPolicy: true
 
       database:
         client: better-sqlite3
         connection: ':memory:'
 
-    integrations:
-      github:
-        - host: github.com
-
     auth:
-      environment: production
+      environment: development
 
       providers:
-        github:
-          production:
-            clientId: GITHUB_CLIENT_ID
-            clientSecret: GITHUB_CLIENT_SECRET
+        guest: {}
 
     scaffolder: {}
 
@@ -60,4 +52,19 @@ data:
 
     catalog:
       rules:
-        - allow: [Component, System, API, Resource, Location]
+        - allow:
+            - Component
+            - System
+            - API
+            - Resource
+            - Location
+            - Template
+
+      locations:
+        - type: url
+          target: https://raw.githubusercontent.com/rajudruva2/backstage-catalog/main/catalog-info.yaml
+
+    kubernetes: {}
+
+    permission:
+      enabled: false
