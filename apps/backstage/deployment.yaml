@@ -14,9 +14,6 @@ spec:
 
   strategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
 
   template:
     metadata:
@@ -26,7 +23,9 @@ spec:
     spec:
       containers:
         - name: backstage
+
           image: rajvam6806/backstage-platform:v30
+
           imagePullPolicy: Always
 
           command:
@@ -42,40 +41,35 @@ spec:
 
           env:
             - name: NODE_ENV
-              value: development
-
-            - name: APP_CONFIG_app_baseUrl
-              value: "https://backstage.rajplatform.online"
-
-            - name: APP_CONFIG_backend_baseUrl
-              value: "https://backstage.rajplatform.online"
-
-            - name: APP_CONFIG_backend_listen_port
-              value: "7007"
-
-            # PostgreSQL Configuration
-            - name: APP_CONFIG_backend_database_client
-              value: pg
-
-            - name: APP_CONFIG_backend_database_connection_host
-              value: postgres
-
-            - name: APP_CONFIG_backend_database_connection_port
-              value: "5432"
-
-            - name: APP_CONFIG_backend_database_connection_user
-              value: backstage
-
-            - name: APP_CONFIG_backend_database_connection_password
-              value: backstage
-
-            - name: APP_CONFIG_backend_database_connection_database
-              value: backstage_plugin_catalog
+              value: production
 
           volumeMounts:
             - name: backstage-config-volume
               mountPath: /app/app-config.yaml
               subPath: app-config.yaml
+
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 7007
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 7007
+            initialDelaySeconds: 60
+            periodSeconds: 20
+
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+
+            limits:
+              cpu: "1"
+              memory: "2Gi"
 
       volumes:
         - name: backstage-config-volume
