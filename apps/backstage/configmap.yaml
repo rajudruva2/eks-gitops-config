@@ -69,11 +69,26 @@ data:
             - Resource
             - Location
             - Template
+            - User
+            - Group
 
       locations:
-        - type: url
-          target: https://raw.githubusercontent.com/rajudruva2/backstage-catalog/main/catalog-info.yaml
+      - type: file
+        target: ../../examples/entities.yaml
 
-    
+      - type: file
+        target: ../../examples/org.yaml
+        rules:
+        - allow:
+            - User
+            - Group
+
+      - type: file
+        target: ../../examples/template/template.yaml
+        rules:
+        - allow:
+            - Template 
+
+       
     permission:
       enabled: false
