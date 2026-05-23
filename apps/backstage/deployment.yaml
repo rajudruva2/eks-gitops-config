@@ -24,7 +24,7 @@ spec:
       containers:
         - name: backstage
 
-          image: rajvam6806/backstage-idp:r1
+          image: rajvam6806/backstage-idp:r2
 
           imagePullPolicy: Always
 
