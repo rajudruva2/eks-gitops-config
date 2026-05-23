@@ -44,8 +44,8 @@ data:
       providers:
         github:
           production:
-            clientId: YOUR_GITHUB_CLIENT_ID
-            clientSecret: YOUR_GITHUB_CLIENT_SECRET
+            clientId: GITHUB_CLIENT_ID
+            clientSecret: GITHUB_CLIENT_SECRET
 
     scaffolder: {}
 
