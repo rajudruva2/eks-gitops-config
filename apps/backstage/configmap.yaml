@@ -31,7 +31,8 @@ data:
 
       database:
         client: pg
-        connection: 
+
+        connection:
           host: postgres
           port: 5432
           user: backstage
@@ -42,7 +43,8 @@ data:
       environment: development
 
       providers:
-        guest: {}
+        guest:
+          dangerouslyAllowOutsideDevelopment: true
 
     scaffolder: {}
 
@@ -69,7 +71,8 @@ data:
         - type: url
           target: https://raw.githubusercontent.com/rajudruva2/backstage-catalog/main/catalog-info.yaml
 
-    kubernetes: {}
+    kubernetes:
+      clusterLocatorMethods: []
 
     permission:
       enabled: false
