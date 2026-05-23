@@ -25,7 +25,10 @@ data:
         origin: https://backstage.rajplatform.online
         methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
         credentials: true
-
+      reading:
+        allow:
+        - host: raw.githubusercontent.com
+     
       auth:
         dangerouslyDisableDefaultAuthPolicy: true
 
