@@ -43,8 +43,8 @@ data:
       environment: development
 
       providers:
-        guest:
-          dangerouslyAllowOutsideDevelopment: true
+        guest: {}
+          
 
     scaffolder: {}
 
