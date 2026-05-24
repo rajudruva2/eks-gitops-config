@@ -24,7 +24,7 @@ spec:
       containers:
         - name: backstage
 
-          image: rajvam6806/backstage-idp:r10
+          image: rajvam6806/backstage-idp:d32bbc6e9fd296a95200107ed36bc410a634cd6e
 
           imagePullPolicy: Always
 
