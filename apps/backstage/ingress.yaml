@@ -2,25 +2,24 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 
 metadata:
-  name: backstage-ingress
+  name: backstage
   namespace: backstage
 
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: nginx
 
 spec:
-  ingressClassName: nginx
 
   rules:
-    - host: backstage.rajplatform.online
+  - host: backstage.rajplatform.online
 
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
 
-            backend:
-              service:
-                name: backstage
-                port:
-                  number: 80
+        backend:
+          service:
+            name: backstage
+            port:
+              number: 80
