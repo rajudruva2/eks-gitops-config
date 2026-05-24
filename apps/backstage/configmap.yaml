@@ -6,90 +6,47 @@ metadata:
   namespace: backstage
 
 data:
-  app-config.yaml: |
+  app-config.production.yaml: |
     app:
-      title: Raj Platform
       baseUrl: https://backstage.rajplatform.online
-
-    organization:
-      name: Raj Platform
 
     backend:
       baseUrl: https://backstage.rajplatform.online
 
       listen:
-        host: 0.0.0.0
         port: 7007
+
+      trustProxy: true
 
       cors:
         origin: https://backstage.rajplatform.online
-        methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
-        credentials: true
-      reading:
-        allow:
-        - host: raw.githubusercontent.com
-     
-      auth:
-        dangerouslyDisableDefaultAuthPolicy: true
 
       database:
         client: pg
 
+        pluginDivisionMode: schema
+
         connection:
           host: postgres
           port: 5432
-          user: backstage
-          password: backstage123
-          database: backstage
+          user: ${POSTGRES_USER}
+          password: ${POSTGRES_PASSWORD}
 
     auth:
-      environment: development
+      environment: production
 
       providers:
-        guest: 
-           dangerouslyAllowOutsideDevelopment: true
-          
+        guest:
+          dangerouslyAllowOutsideDevelopment: true
 
-    scaffolder: {}
+    kubernetes:
+      serviceLocatorMethod:
+        type: multiTenant
 
-    techdocs:
-      builder: local
-
-      generator:
-        runIn: docker
-
-      publisher:
-        type: local
-
-    catalog:
-      rules:
-        - allow:
-            - Component
-            - System
-            - API
-            - Resource
-            - Location
-            - Template
-            - User
-            - Group
-
-      locations:
-      - type: file
-        target: /app/examples/entities.yaml
-
-      - type: file
-        target: /app/examples/org.yaml
-        rules:
-        - allow:
-            - User
-            - Group
-
-      - type: file
-        target: /app/examples/template/template.yaml
-        rules:
-        - allow:
-            - Template 
-
-       
-    permission:
-      enabled: false
+      clusterLocatorMethods:
+        - type: config
+          clusters:
+            - name: eks-dev
+              url: https://kubernetes.default.svc
+              authProvider: serviceAccount
+              skipTLSVerify: true
