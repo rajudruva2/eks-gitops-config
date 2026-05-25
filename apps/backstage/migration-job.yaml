@@ -27,7 +27,7 @@ spec:
           imagePullPolicy: Always
 
           command:
-            - yarn
+            - npx
             - backstage-cli
             - knex
             - migrate:latest
