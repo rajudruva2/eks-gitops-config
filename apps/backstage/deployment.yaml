@@ -5,10 +5,6 @@ metadata:
   name: backstage
   namespace: backstage
 
-  labels:
-    app: backstage
-    backstage.io/kubernetes-id: backstage
-
 spec:
   replicas: 1
 
@@ -20,44 +16,16 @@ spec:
     metadata:
       labels:
         app: backstage
-        backstage.io/kubernetes-id: backstage
 
     spec:
-      serviceAccountName: backstage-kubernetes
-
       containers:
         - name: backstage
 
-          image: rajvam6806/backstage:10b0184d025953dbc3950b1ab64e13b5f6ecfc96
-
-          imagePullPolicy: Always
+          image: rajvam6806/backstage-idp:111
 
           ports:
             - containerPort: 7007
 
-          envFrom:
-            - secretRef:
-                name: backstage-secret
-
-            - secretRef:
-                name: backstage-github-auth
-
-          volumeMounts:
-            - name: backstage-config
-              mountPath: /app/app-config.production.yaml
-              subPath: app-config.production.yaml
-
-          readinessProbe:
-            httpGet:
-              path: /healthcheck
-              port: 7007
-
-          livenessProbe:
-            httpGet:
-              path: /healthcheck
-              port: 7007
-
-      volumes:
-        - name: backstage-config
-          configMap:
-            name: backstage-config
+          env:
+            - name: NODE_ENV
+              value: production
