@@ -29,6 +29,9 @@ spec:
           env:
             - name: NODE_ENV
               value: production
+
+            - name: BACKSTAGE_NO_MIGRATION
+              value: "true"     
           envFrom:
             - secretRef:
                 name: backstage-secret
