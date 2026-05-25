@@ -24,7 +24,7 @@ spec:
       containers:
         - name: backstage
 
-          image: rajvam6806/backstage:fccf14f28763029e07a7fba3ed02021e2b8f2840
+          image: rajvam6806/backstage:b03e0b2ce3c8f8a3d01ef1caa66546e2f8646b87
 
           ports:
             - containerPort: 7007
