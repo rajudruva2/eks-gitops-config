@@ -29,3 +29,9 @@ spec:
           env:
             - name: NODE_ENV
               value: production
+          envFrom:
+            - secretRef:
+                name: backstage-secret
+
+            - secretRef:
+                name: backstage-github-auth    
