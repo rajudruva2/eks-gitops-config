@@ -20,6 +20,8 @@ data:
 
       cors:
         origin: https://backstage.rajplatform.online
+        methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+        credentials: true
 
       database:
         client: pg
@@ -32,17 +34,18 @@ data:
           user: ${POSTGRES_USER}
           password: ${POSTGRES_PASSWORD}
 
-     auth:
-       environment: production
+    auth:
+      environment: production
 
-       providers:
-         github:
-           production:
-             clientId: ${AUTH_GITHUB_CLIENT_ID}
-             clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
-             signIn:
-               resolvers:
-               - resolver: usernameMatchingUserEntityName
+      providers:
+        github:
+          production:
+            clientId: ${AUTH_GITHUB_CLIENT_ID}
+            clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+
+            signIn:
+              resolvers:
+                - resolver: usernameMatchingUserEntityName
 
     kubernetes:
       serviceLocatorMethod:
