@@ -1,0 +1,62 @@
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: backstage-migrate
+  namespace: backstage
+
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+
+spec:
+  backoffLimit: 2
+
+  template:
+    metadata:
+      labels:
+        app: backstage-migrate
+
+    spec:
+      restartPolicy: Never
+
+      containers:
+        - name: backstage-migrate
+
+          image: rajvam6806/backstage:IMAGE_TAG
+
+          imagePullPolicy: Always
+
+          command:
+            - yarn
+            - backstage-cli
+            - knex
+            - migrate:latest
+
+          env:
+            - name: NODE_ENV
+              value: production
+
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: backstage-secret
+                  key: POSTGRES_USER
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backstage-secret
+                  key: POSTGRES_PASSWORD
+
+            - name: AUTH_GITHUB_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: backstage-github-auth
+                  key: AUTH_GITHUB_CLIENT_ID
+
+            - name: AUTH_GITHUB_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backstage-github-auth
+                  key: AUTH_GITHUB_CLIENT_SECRET
