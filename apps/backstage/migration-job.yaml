@@ -23,7 +23,7 @@ spec:
       containers:
         - name: backstage-migrate
 
-          image: rajvam6806/backstage:IMAGE_TAG
+          image: rajvam6806/backstage:9c93e5d75929bbf7405a8a58e2a3ef7fc8d19dce
 
           imagePullPolicy: Always
 
