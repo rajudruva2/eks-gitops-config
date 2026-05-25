@@ -32,7 +32,8 @@ spec:
           env:
             - name: NODE_ENV
               value: production
-
+            - name: BACKSTAGE_DB_MIGRATIONS_SKIP
+              value: "true"
                 
           envFrom:
             - secretRef:
