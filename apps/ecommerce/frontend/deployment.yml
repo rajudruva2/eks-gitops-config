@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: ecommerce-frontend
-          image: rajvam6806/e-commerce-frontend:c3283f17306ef065577d4c2b3ef0484462432a8d
+          image: rajvam6806/e-commerce-frontend:8b3ffc962380c685dc99787f124b203f653f1fac
 
           imagePullPolicy: Always
 
