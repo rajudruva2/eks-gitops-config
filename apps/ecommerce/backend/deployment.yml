@@ -24,7 +24,7 @@ spec:
       containers:
         - name: ecommerce-backend
 
-          image: rajvam6806/e-commerce-backend:be85df6dad3e0d1222409f19f6bc73c0e2e953eb
+          image: rajvam6806/e-commerce-backend:9e533ac582d793b4e3ea8ade99be44a9c7e56c39
 
           imagePullPolicy: Always
 
