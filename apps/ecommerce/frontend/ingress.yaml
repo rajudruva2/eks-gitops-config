@@ -4,7 +4,8 @@ kind: Ingress
 metadata:
   name: ecommerce-frontend-ingress
   namespace: ecommerce
-
+  labels:
+    backstage.io/kubernetes-id: e-commerce-frontend
 spec:
   ingressClassName: nginx
 
