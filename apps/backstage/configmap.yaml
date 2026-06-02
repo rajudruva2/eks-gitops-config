@@ -1,1 +1,89 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backstage-config
+  namespace: backstage
+  labels:
+    k8slens-edit-resource-version: v1
+  annotations:
+spec: {}
+data:
+  app-config.k8s.yaml: |
+    app:
+      title: Raj Platform
+      baseUrl: https://backstage.rajplatform.online
+
+    organization:
+      name: Raj Platform
+
+    integrations:
+      github:
+        - host: github.com
+          token: ${GITHUB_TOKEN}
+
+    catalog:
+      locations:
+        - type: file
+          target: /app/examples/org.yaml
+          rules:
+          - allow: [User, Group]
+
+        - type: file
+          target: /app/examples/entities.yaml
+           
+        - type: file
+          target: /app/examples/template/template.yaml
+          rules:
+          - allow: [Template]  
+
+        - type: file
+          target: ../../examples/entities.yaml
+
+        - type: file
+          target: ../../examples/template/template.yaml
+          rules:
+          - allow: [Template]
+
+        - type: file
+          target: ../../examples/org.yaml
+          rules:
+          - allow: [User, Group]
+
+        - type: url
+          target: https://github.com/rajudruva2/backstage-idp/blob/main/catalog-info.yaml
+
+        - type: url
+          target: https://github.com/rajudruva2/terraform-eks-eksctl/blob/main/catalog-info.yaml
+
+        - type: url
+          target: https://github.com/rajudruva2/e-commerce-backend/blob/main/catalog-info.yaml
+
+        - type: url
+          target: https://github.com/rajudruva2/e-commerce-frontend/blob/main/catalog-info.yaml
+
+        - type: url
+          target: https://github.com/rajudruva2/ems-backend/blob/main/catalog-info.yaml
+
+        - type: url
+          target: https://github.com/rajudruva2/ems-frontend/blob/main/catalog-info.yaml
+
+        - type: url
+          target: https://github.com/rajudruva2/eks-gitops-config/blob/main/catalog-info.yaml  
+    kubernetes:
+      serviceLocatorMethod:
+        type: multiTenant
+
+      clusterLocatorMethods:
+        - type: config
+          clusters:
+            - name: dev-eks
+              url: https://kubernetes.default.svc
+              authProvider: serviceAccount
+              caData: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJZis1NENvV2J2NTR3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpBMU1qa3dPRFV3TURCYUZ3MHpOakExTWpZd09EVTFNREJhTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUUNqUW1rTzdPY1BKZFdsblBuUnJrZHdES0ZmTy9GNDgwa3RSZHkzZ2xmUDViSGdkQ3MxUExkbFdsS3QKckdHa1lOdXdJZk40OEpiclE0UytQc1VRQnNmVC9Na21DcjErN2xhV1VXSHl3VnVTVVdwSFZmSlhWMGVuQmV5agptbjNqdTlOemN3MlVOV21JM2lIWUdJWTlHWnJaamhWaUpmY0ZLSlJkeXlLWFZUS25MbkdBbS9Fek5XUFBpR0RiCnFPY1FudjlKL01IYjR3NnUwVDVoY0ZrMTlWVUJFT1BiNHZsSUhGbUF1NllrUU11SzFGTy9oQytlb1AwM1hNWFMKZ1JWTS8rVXdTVHBwRURkTmdvRHVsOXl0UkhiR1I0UWdITFNQMUp3Um1BdnRrbGtKb3A2RXVITkc1SFd6b3g5cgp3ay9uVEhEcDFaK1RYTGhQMVhlOHlsTzJub2ZIQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJTNDhYdVp1akxlUDU5a0ZWcUVja3FrWHJwVzJEQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQVJIMWZkZjJFbgpIbU5aWmRvSktFT2s4QjRPSVY2VjIyVnd5Y3lmMlpsczBjZUU0OEJyd04yNXZpVy9RbEp0bVQrZmhadDBnS2xiCmd4bS9XVTJ0Vzh6OVd6R2Y2TG9rYjNNeW5oWllTNW5HLzI0Zk5XaS9MNTI4YjFVNmRaRjhDOXNqT0pTVUFhaGYKVm5zKzVIeVZpUVVCWlJ5WTIvZ3YzeUlMZGtidmN4Q3FodG1ocnl4ODZmK2IzazhUWDF0UVMwS05FTEFLK1RTTQozSjUwWDEzdWpwaWJyQkZ3WFVqVDZwTjNYTzNTb3I2QTlNUnhaMFN4bUJrbUFLQmxBTjFLVFJIblV6QzVneVJWCjJHcVc4QnNjelBLSXY5MkM4dWV2cVVhRExBc3g3RzJ4L2daM2dRQ0I4M3hRUUpCTjBOQlBhN3pwSUhwc2JNS0gKY3A2N2JqRlY3eXNWCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    permission:
+      enabled: true
+
+    mcpActions:
+      name: Raj Platform Backstage
+      description: Internal Developer Portal
 
