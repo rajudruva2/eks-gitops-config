@@ -3,11 +3,14 @@ kind: Service
 metadata:
   name: backstage
   namespace: backstage
+
 spec:
-  ports:
-  - nodePort: 32208
-    port: 80
-    targetPort: 7007
+  type: ClusterIP
+
   selector:
     app: backstage
-  type: ClusterIP
+
+  ports:
+    - port: 80
+      targetPort: 7007
+      protocol: TCP
