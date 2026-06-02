@@ -5,7 +5,7 @@ metadata:
   name: ecommerce-backend-service
   namespace: ecommerce
   labels:
-    backstage.io/kubernetes-id: e-commerce-frontend
+    backstage.io/kubernetes-id: e-commerce-backend
 
 spec:
   selector:
