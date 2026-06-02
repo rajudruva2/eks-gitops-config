@@ -3,7 +3,7 @@ kind: Service
 
 metadata:
   name: springboot-template
-
+  namespace: springboot-template
 spec:
   selector:
     app: springboot-template
