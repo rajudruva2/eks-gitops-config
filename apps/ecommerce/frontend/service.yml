@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: ecommerce-frontend-service
   namespace: ecommerce
+  labels:
+    backstage.io/kubernetes-id: e-commerce-frontend
 
 spec:
   selector:
