@@ -1,26 +1,37 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
+
 metadata:
-  annotations:
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:443407534093:certificate/dfd0d0d7-65aa-4333-bbcc-918e1cef0c72
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/ssl-redirect: "443"
-    alb.ingress.kubernetes.io/target-type: ip
-  labels:
-    k8slens-edit-resource-version: v1
   name: backstage
   namespace: backstage
+
+  annotations:
+    alb.ingress.kubernetes.io/group.name: rajplatform
+
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:443407534093:certificate/1dd61877-d482-4fb3-9e82-80156c95f57e
+
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+
+    alb.ingress.kubernetes.io/ssl-redirect: "443"
+
 spec:
   ingressClassName: alb
+
   rules:
-  - host: backstage.rajplatform.online
-    http:
-      paths:
-      - backend:
-          service:
-            name: backstage
-            port:
-              number: 80
-        path: /
-        pathType: Prefix
+    - host: backstage.rajplatform.online
+
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+
+            backend:
+              service:
+                name: backstage
+                port:
+                  number: 80
