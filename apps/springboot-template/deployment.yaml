@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: springboot-template
+  namespace: springboot-template
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: springboot-template
+
+  template:
+    metadata:
+      labels:
+        app: springboot-template
+        backstage.io/kubernetes-id: springboot-template
+
+    spec:
+      containers:
+      - name: springboot-template
+
+        image: rajvam6806/springboot-template:latest
+
+        ports:
+        - containerPort: 8080
