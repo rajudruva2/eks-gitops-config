@@ -20,7 +20,12 @@ data:
       github:
         - host: github.com
           token: ${GITHUB_TOKEN}
-
+    backend:
+      baseUrl: https://backstage.rajplatform.online
+      reading:
+        allow:
+        - host: raw.githubusercontent.com
+        - host: github.com
     catalog:
       locations:
         - type: file
