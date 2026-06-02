@@ -4,7 +4,8 @@ kind: Deployment
 metadata:
   name: ecommerce-backend
   namespace: ecommerce
-
+  labels:
+    backstage.io/kubernetes-id: e-commerce-backend
 spec:
   replicas: 1
 
@@ -16,6 +17,7 @@ spec:
     metadata:
       labels:
         app: ecommerce-backend
+        backstage.io/kubernetes-id: e-commerce-backend
 
     spec:
       imagePullSecrets:
