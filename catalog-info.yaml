@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+
+metadata:
+  name: eks-gitops-config
+  description: GitOps configuration repository for EKS cluster
+
+  annotations:
+    github.com/project-slug: rajudruva2/eks-gitops-config
+
+spec:
+  type: service
+  lifecycle: production
+  owner: user:default/rajudruva2
