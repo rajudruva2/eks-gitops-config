@@ -3,6 +3,7 @@ kind: Ingress
 
 metadata:
   name: springboot-template
+  namespace: springboot-template
 
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
