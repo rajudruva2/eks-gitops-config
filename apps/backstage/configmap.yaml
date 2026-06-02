@@ -68,7 +68,9 @@ data:
           target: https://github.com/rajudruva2/ems-frontend/blob/main/catalog-info.yaml
 
         - type: url
-          target: https://github.com/rajudruva2/eks-gitops-config/blob/main/catalog-info.yaml  
+          target: https://github.com/rajudruva2/eks-gitops-config/blob/main/catalog-info.yaml
+        - type: url
+          target: https://raw.githubusercontent.com/rajudruva2/backstage-idp/main/templates/springboot-app/template.yaml  
     kubernetes:
       serviceLocatorMethod:
         type: multiTenant
